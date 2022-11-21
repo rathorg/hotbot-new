@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.8/vue.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.0.3/vue-resource.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js"></script>
+  </head>
+  <body>
+
+  <section id="app" >
+    <div class="container" v-for="source in sources">
+        <div class="row"  v-for="post in source.posts">
+            <div class="col-md-4" >
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title" v-html="post.title.rendered"></h4>
+                  <h4 class="card-title" v-html="post.featured_media"></h4>
+                  <p class="card-text">
+                      {{source.name}}
+                  </p>
+                  <div v-html="post.excerpt.rendered"></div>
+                  <img class="card-img-bottom" src="img_avatar6.png" alt="Card image" style="width: 100%" />
+                  <br>
+                  <a class="btn btn-primary" v-bind:href="post.link" target="_blank">See Profile</a>
+                 
+                </div>
+
+
+                
+              </div>
+            </div>
+          </div>
+    </div>
+  </section>
+
+
+      
+
+    
+
+
+    
+
+    <script>
+      var app = new Vue({
+        el: "#app",
+
+        data: function () {
+          return {
+            sources: [
+              {
+                name: "css-tricks.comdd",
+                url: "http://blog.global-opportunities.net/wp-json/wp/v2/posts?per_page=4",
+                posts: [],
+              },
+            ],
+          };
+        },
+
+        methods: {
+          loadPosts: function () {
+            var self = this;
+
+            self.sources.forEach(function (source, index) {
+              self.$delete(source, "posts");
+
+              // Get API with vue-resource
+              self.$http.get(source.url).then(
+                function (response) {
+                  self.$set(source, "posts", response.data);
+                },
+                function (response) {
+                  console.log("Error");
+                }
+              );
+            });
+          },
+        },
+
+        mounted: function () {
+          this.$nextTick(function () {
+            this.loadPosts();
+          });
+        },
+      });
+    </script>
+  </body>
+</html>
