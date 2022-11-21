@@ -23,7 +23,7 @@
                                           <a href="shop.html">Services</a>
                                           <ul class="submenu">
                                              <li><a href="shop.html">SEO</a></li>
-                                             <li><a href="shop-details.html">SMO</a></li>
+                                             <li><a href="social-media-marketing.php">SMO</a></li>
                                              <li><a href="checkout.html">Paid Ads</a></li>
                                              <li><a href="checkout.html">Bulk SMS & Email Marketing</a></li>
                                              <li><a href="checkout.html">Content Marketing</a></li>
