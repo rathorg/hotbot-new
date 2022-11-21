@@ -7,7 +7,7 @@
                 <div class="col-lg-5">
                     <div class="da-hero-section mt-40">
                         <span class="da-hero-section__subtitle white-bg mb-15 d-inline-block wow tpfadeUp">
-                            Digital Experience In <b> NYC </b></span>
+                            Digital Experience In <b> NYC 2</b></span>
                         <div class="cd-intro">
                             <h3 class="da-hero-section__title cd-headline loading-bar mb-45 wow tpfadeUp" data-wow-delay=".3s">
                                 <span>Solid product
